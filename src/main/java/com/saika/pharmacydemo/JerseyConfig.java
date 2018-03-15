@@ -23,7 +23,7 @@ public class JerseyConfig extends ResourceConfig {
 	@Autowired
 	public JerseyConfig(ObjectMapper objectMapper) {
 		// register endpoints
-		packages("com.saika.patientdemo.service");
+		packages("com.saika.pharmacydemo.service");
 		register(CORSFilter.class,6004);
 		// register jackson for json
 		register(new ObjectMapperContextResolver(objectMapper));
