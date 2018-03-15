@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.saika</groupId>
-	<artifactId>patientdemo</artifactId>
+	<artifactId>pharmacydemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>patientdemo</name>
-	<description>Demo project for patient application</description>
+	<name>pharmacydemo</name>
+	<description>Demo project for pharmacy application</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
