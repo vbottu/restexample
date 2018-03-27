@@ -39,10 +39,10 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId:env.DOCKER_ID, passwordVariable:'password_docker',usernameVariable:'username_docker')]){
                 sh '''
-                docker login -u ${username_docker} -p ${password_docker} ${DOCKER_REGISTRY}
-                docker build -t ${IMAGE_NAME} -f docker/Dockerfile .
-                docker push ${IMAGE_NAME}
-                docker rmi ${IMAGE_NAME} || true
+                sudo docker login -u ${username_docker} -p ${password_docker} ${DOCKER_REGISTRY}
+                sudo docker build -t ${IMAGE_NAME} -f docker/Dockerfile .
+                sudo docker push ${IMAGE_NAME}
+                sudo docker rmi ${IMAGE_NAME} || true
                 '''
                 }
             }
