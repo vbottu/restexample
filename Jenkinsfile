@@ -18,7 +18,7 @@ pipeline {
                     env.APPLICATION_NAME=pom.properties['artifactName']
                     env.VERSION=pom.version
                     env.IMAGE_NAME=pom.properties['docker.registry']+"/"+APPLICATION_NAME+":"+VERSION
-                    env.DOCKER_HOST="tcp://localhost:4243"
+                    env.DOCKER_HOST="unix:///var/run/docker.sock"
                     env.DOCKER_REGISTRY=pom.properties['docker.registry']
                 }
             }
