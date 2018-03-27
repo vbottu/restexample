@@ -17,7 +17,7 @@ pipeline {
                     pom= readMavenPom file: 'pom.xml'
                     env.APPLICATION_NAME=pom.properties['artifactName']
                     env.VERSION=pom.version
-                    env.IMAGE_NAME="vv2599/"+pom.properties['artifactName']+":"+VERSION
+                    env.IMAGE_NAME="vv2599/pharmacydemo:1.0.0"
                     env.DOCKER_HOST="tcp://localhost:4243"
                     env.DOCKER_REGISTRY=pom.properties['docker.registry']
                 }
