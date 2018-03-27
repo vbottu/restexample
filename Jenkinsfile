@@ -21,11 +21,6 @@ pipeline {
             steps {
                 sh 'mvn -DskipTests -Dmaven.test.skip=true  clean compile' 
             }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
         }
         stage('package'){
             steps{
