@@ -14,6 +14,6 @@ RUN cd ~ && \
     apt-get clean
 
 ADD service.sh /service.sh
-chmod 700 /service.sh
+RUN chmod 700 /service.sh
 CMD["mvn"]
 ENTRYPOINT ./service.sh
