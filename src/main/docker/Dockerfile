@@ -1,6 +1,6 @@
 FROM openjdk:8
 VOLUME /tmp
-ADD pharmademo-*.jar app.jar
+ADD pharmacydemo-*.jar app.jar
 RUN apt-get update -y && \
     apt-get install -y sudo
 ENV MAVEN_VERSION 3.5.0 
