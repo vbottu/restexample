@@ -15,5 +15,4 @@ RUN cd ~ && \
 
 ADD service.sh /service.sh
 RUN chmod 700 /service.sh
-CMD["mvn"]
 ENTRYPOINT ./service.sh
