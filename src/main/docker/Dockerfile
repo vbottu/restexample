@@ -13,6 +13,6 @@ RUN cd ~ && \
     rm -f apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
     apt-get clean
 
-ADD service.sh /service.sh
+ADD src/main/docker/service.sh /service.sh
 RUN chmod 700 /service.sh
 ENTRYPOINT ./service.sh
