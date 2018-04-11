@@ -9,7 +9,7 @@ pipeline {
     tools {
         maven 'mvn-3.5.3'
         jdk 'jdk8'
-        docker 'docker'
+        DockerTool 'docker'
     }
     stages {
         stage ('Initialize') {
