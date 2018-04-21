@@ -38,7 +38,8 @@ pipeline {
         }
         stage('publish'){
             steps{
-                nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'springboot-rel', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'pharmacydemo', groupId: 'com.saika', packaging: 'jar', version: '1.0.0']]]
+                nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'springboot-rel', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: 'jar', filePath: 'target']], mavenCoordinate: [artifactId: 'pharmacydemo', groupId: 'com.saika', packaging: 'jar', version: '1.0.0']]]
+
             }
         }
         stage('build'){
