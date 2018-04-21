@@ -36,6 +36,11 @@ pipeline {
                 sh 'mvn -DskipTests -Dmaven.test.skip=true package'
             }
         }
+        stage('publish'){
+            steps{
+                nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'springboot-rel', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'pharmacydemo', groupId: 'com.saika', packaging: 'jar', version: '1.0.0']]]
+            }
+        }
         stage('build'){
             steps{
                 withCredentials([usernamePassword(credentialsId:env.DOCKER_ID, passwordVariable:'password_docker',usernameVariable:'username_docker')]){
