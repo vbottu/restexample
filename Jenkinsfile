@@ -1,5 +1,7 @@
 pipeline {
-    agent dockerslave
+    agent {
+        label 'dockerslave'
+    }
     triggers{
         pollSCM('')
     }
