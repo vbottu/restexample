@@ -13,6 +13,9 @@ pipeline {
     }
     stages {
         stage ('Initialize') {
+            def dockerHome = tool 'myDocker'
+    def mavenHome  = tool 'myMaven'
+    env.PATH = "${dockerHome}/bin:${env.PATH}"
             steps {
                 script{
                     pom= readMavenPom file: 'pom.xml'
@@ -42,17 +45,17 @@ pipeline {
 
             }
         }
-      //  stage('build'){
-           // steps{
-            //    withCredentials([usernamePassword(credentialsId:env.DOCKER_ID, passwordVariable:'password_docker',usernameVariable:'username_docker')]){
-             //   sh '''
-              //  docker login -u ${username_docker} -p ${password_docker} ${DOCKER_REGISTRY}
-             //   docker build -t ${IMAGE_NAME} -f src/main/docker/Dockerfile .
-              //  docker push ${IMAGE_NAME}
-              //  docker rmi ${IMAGE_NAME} || true
-              //  '''
-             //   }
-           // }
-        //}
+        stage('build'){
+            steps{
+               withCredentials([usernamePassword(credentialsId:env.DOCKER_ID, passwordVariable:'password_docker',usernameVariable:'username_docker')]){
+                sh '''
+                docker login -u ${username_docker} -p ${password_docker} ${DOCKER_REGISTRY}
+                docker build -t ${IMAGE_NAME} -f src/main/docker/Dockerfile .
+                docker push ${IMAGE_NAME}
+                docker rmi ${IMAGE_NAME} || true
+                '''
+                }
+            }
+        }
     }
 }
