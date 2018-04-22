@@ -13,11 +13,12 @@ pipeline {
     }
     stages {
         stage ('Initialize') {
-            def dockerHome = tool 'myDocker'
-    def mavenHome  = tool 'myMaven'
-    env.PATH = "${dockerHome}/bin:${env.PATH}"
+            
             steps {
                 script{
+                    dockerHome = tool 'myDocker'
+                    mavenHome  = tool 'myMaven'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
                     pom= readMavenPom file: 'pom.xml'
                     env.APPLICATION_NAME=pom.properties['artifactName']
                     env.VERSION=pom.version
